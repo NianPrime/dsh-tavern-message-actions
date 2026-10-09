@@ -24,7 +24,12 @@
 
 ## 安装
 
-需要 DSH、DSHT 2.5.0 对应源码，以及 SQLite V2 0.3.5-preview.1。桥接依赖 SQLite V2 的完整后端与标准宿主补丁；请先按 [SQLite V2 项目说明](https://github.com/huajiao1998/dsh-tavern-sqlite-v2)完成安装，再安装本插件。
+需要 DSH、DSHT 2.5.0 对应源码，以及 SQLite V2 0.3.5-preview.1。该 SQLite 版本是本次适配使用的本地改编版，本仓库不包含完整后端，不能用不同版本直接替代。桥接依赖其完整后端与标准宿主补丁；安装流程可参考 [SQLite V2 项目说明](https://github.com/huajiao1998/dsh-tavern-sqlite-v2)，版本以本仓库的 [适配说明](UPGRADE-5026.md)为准。
+
+```powershell
+git clone https://github.com/NianPrime/dsh-tavern-message-actions.git
+cd dsh-tavern-message-actions
+```
 
 ### 1. 检查并应用宿主桥接
 
@@ -64,5 +69,6 @@ node .\install-bridge.mjs 'F:\你的DSHT源码' --restore
 - SQLite 配套版本为 0.3.5-preview.1。
 - `preview.html` 是不连接真实存档的独立界面演示。
 - 当前版本的检查范围和已知限制见 [检查记录](CHECKS.md) 与 [端到端验收记录](E2E-REPORT.md)。
+- `tests/` 中的宿主集成测试依赖原验收工作区的 DSHT、SQLite 和真实 DSH SDK 夹具，克隆本仓库不能直接运行完整套件。独立消息操作测试可用 `node --test tests/message-operations.test.mjs` 运行。
 
 本包包含改编自 [dsh-tavern-sqlite-v2](https://github.com/huajiao1998/dsh-tavern-sqlite-v2) 的桥接代码。来源、改动范围和许可证说明见 [THIRD_PARTY.md](THIRD_PARTY.md)；许可全文见 [LICENSE](LICENSE)。

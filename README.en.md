@@ -24,7 +24,12 @@ Actions are refused when a safe replacement boundary, complete snapshot, or veri
 
 ## Install
 
-Requires DSH, the source for DSHT 2.5.0, and SQLite V2 0.3.5-preview.1. The bridge depends on the full SQLite V2 backend and its standard host patch. Install those first, following the [SQLite V2 project instructions](https://github.com/huajiao1998/dsh-tavern-sqlite-v2).
+Requires DSH, the source for DSHT 2.5.0, and SQLite V2 0.3.5-preview.1. That SQLite version is a local adaptation used for this integration. This repository does not include the full backend, and a different version cannot be substituted directly. The bridge requires its complete backend and standard host patch. Refer to the [SQLite V2 project instructions](https://github.com/huajiao1998/dsh-tavern-sqlite-v2) for the installation flow and this repository's [adaptation notes](UPGRADE-5026.md) for the required versions.
+
+```powershell
+git clone https://github.com/NianPrime/dsh-tavern-message-actions.git
+cd dsh-tavern-message-actions
+```
 
 ### 1. Check and apply the host bridge
 
@@ -64,5 +69,6 @@ Rollback cleans the current SQLite save and its associated Session history. Inde
 - Matching SQLite version: 0.3.5-preview.1.
 - `preview.html` is a standalone UI demo and does not connect to a real save.
 - See [check records](CHECKS.md) and the [end-to-end report](E2E-REPORT.md) for current validation scope and limitations.
+- Host integration tests in `tests/` depend on the original validation workspace's DSHT, SQLite, and real DSH SDK fixtures. The full suite cannot run from this repository alone. Run the standalone message operation tests with `node --test tests/message-operations.test.mjs`.
 
 This package includes bridge code adapted from [dsh-tavern-sqlite-v2](https://github.com/huajiao1998/dsh-tavern-sqlite-v2). See [THIRD_PARTY.md](THIRD_PARTY.md) for source and modification details, and [LICENSE](LICENSE) for the full license.
