@@ -1,0 +1,9 @@
+- id: dsh-tavern-storage-standard-host-v2
+  disabled: true
+- insert:
+    - id: message-actions-sqlite-host
+      name: dsh-tavern-message-actions/sqlite-host
+      inject: [loader]
+    - id: tavern-message-actions
+      name: dsh-tavern-message-actions
+      config: {}

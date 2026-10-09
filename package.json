@@ -1,0 +1,49 @@
+{
+  "name": "dsh-tavern-message-actions",
+  "version": "0.2.1-preview.1",
+  "description": "Message actions plugin and host bridge for DeepSeek Tavern (DSHT)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NianPrime/dsh-tavern-message-actions.git"
+  },
+  "homepage": "https://github.com/NianPrime/dsh-tavern-message-actions#readme",
+  "bugs": {
+    "url": "https://github.com/NianPrime/dsh-tavern-message-actions/issues"
+  },
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./sqlite-host": "./sqlite-host.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "sqlite-host.js",
+    "bridge",
+    "install-bridge.mjs",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "CHECKS.md",
+    "E2E-REPORT.md",
+    "UPGRADE-5026.md",
+    "LICENSE",
+    "THIRD_PARTY.md",
+    "tests"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "dsh-tavern-plugin"
+      ]
+    }
+  },
+  "license": "AGPL-3.0-only"
+}
